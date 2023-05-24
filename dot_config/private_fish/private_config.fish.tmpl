@@ -2,8 +2,10 @@
 
 # Fish Configuration File.
 
+{{- if eq .chezmoi.os "linux" }}
 # Environment Variables.
 load_environment
+{{ end }}
 
 if [ $TERM != linux ]
     # Configure Starship.

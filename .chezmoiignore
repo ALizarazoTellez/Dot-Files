@@ -3,3 +3,22 @@
 /Documentation/
 /Readme.md
 /License.txt
+
+
+# These point files are designed for Arch Linux and Android Termux. The output
+# of the `.chezmoi.os` variable is `linux` in Arch Linux and `android` in
+# Android Termux.
+
+{{ if eq .chezmoi.os "android" }}
+# Avoid Arch Linux specific files on Android Termux.
+
+# Environment variables.
+/.config/environment.d/
+# This function is unnecessary without environment variables.
+/.config/fish/functions/load_environment.fish
+
+{{- else if eq .chezmoi.os "linux" }}
+# Avoid Android-specific files on Arch Linux.
+
+
+{{- end }}
