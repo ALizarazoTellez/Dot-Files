@@ -18,6 +18,8 @@
 /.config/fish/functions/load_environment.fish
 # Wayland related configuration.
 /.config/swaylock
+# Arch-specific scripts.
+/.config/support/tmux-start
 
 
 {{- else if eq .chezmoi.os "linux" }}

@@ -1,0 +1,12 @@
+#!/usr/bin/fish
+
+# Get all Tmux sessions that are currently attached.
+set -l tmux_sessions (tmux list-sessions -F '#{session_name}' -f '#{==:#{session_attached},0}')
+
+if [ (count $tmux_sessions) = 0 ]
+    # If there are no unattached Tmux sessions, start normally (it will create a new session).
+    tmux
+else
+    # If there are any unattached sessions, take that one.
+    exec tmux attach $tmux_sesions[-1]
+end
