@@ -16,6 +16,9 @@
 /.config/environment.d/
 # This function is unnecessary without environment variables.
 /.config/fish/functions/load_environment.fish
+# Wayland related configuration.
+/.config/swaylock
+
 
 {{- else if eq .chezmoi.os "linux" }}
 # Avoid Android-specific files on Arch Linux.

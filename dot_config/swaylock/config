@@ -1,0 +1,59 @@
+#!/usr/bin/env swaylock -C
+
+# Colorsheme (Catppuccin Mocha).
+# Taken of: https://github.com/remiposo/swaylock/blob/main/themes/mocha.conf
+bs-hl-color=f5e0dc
+caps-lock-bs-hl-color=f5e0dc
+caps-lock-key-hl-color=a6e3a1
+color=1e1e2e
+inside-caps-lock-color=00000000
+inside-clear-color=00000000
+inside-color=00000000
+inside-ver-color=00000000
+inside-wrong-color=00000000
+key-hl-color=a6e3a1
+layout-bg-color=00000000
+layout-border-color=00000000
+layout-text-color=cdd6f4
+line-caps-lock-color=00000000
+line-clear-color=00000000
+line-color=00000000
+line-ver-color=00000000
+line-wrong-color=00000000
+ring-caps-lock-color=fab387
+ring-clear-color=f5e0dc
+ring-color=b4befe
+ring-ver-color=89b4fa
+ring-wrong-color=eba0ac
+separator-color=00000000
+text-caps-lock-color=fab387
+text-clear-color=f5e0dc
+text-color=cdd6f4
+text-ver-color=89b4fa
+text-wrong-color=eba0ac
+
+# Fonts.
+font=Quicksand
+
+# Blur.
+effect-blur=3x3
+
+# Background Image.
+# Avaible in the AUR package: catppuccin-wallpapers-git
+image=/usr/share/backgrounds/catppuccin-wallpapers/landscapes/Bridge.jpg
+
+# Date & Time.
+clock
+datestr=%d %B %Y
+timestr=%R
+indicator
+
+# Misc.
+
+# Give 7 seconds of access without requesting a password.
+grace=7
+grace-no-mouse
+
+# I only use two schemes: Dvorak Latam and Qwerty, both of which I know very
+# well, so I don't need this indicator.
+hide-keyboard-layout
