@@ -1,0 +1,112 @@
+/* Waybar Appearance. */
+
+/* Catppuccin Mocha Theme. */
+@import url("mocha.css");
+
+* {
+  font-family: FontAwesome6Free, SymbolsNerdFont, "Quicksand Medium";
+  font-size: 13px;
+}
+
+window#waybar {
+  background-color: shade(@base, 0.9);
+  color: @text;
+  transition-duration: 0.5s;
+  transition-property: background-color;
+}
+
+#workspaces button {
+  background-color: transparent;
+  color: #ffffff;
+  padding: 0 5px;
+}
+
+#workspaces button:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces button.focused {
+  background-color: #64727d;
+  box-shadow: inset 0 -3px #ffffff;
+}
+
+#workspaces button.urgent {
+  background-color: #eb4d4b;
+}
+
+#battery,
+#clock,
+#custom-media,
+#network,
+#wireplumber,
+#tray {
+  background: @surface0;
+  border-radius: 7px;
+  color: @text;
+  margin-bottom: 0px;
+  margin: 3px;
+  padding: 4px 7px 3px 7px;
+}
+
+#window,
+#workspaces {
+}
+
+#clock {
+  font-size: 14px;
+  font-weight: bolder;
+}
+
+#battery {
+}
+
+#battery.charging,
+#battery.plugged {
+}
+
+@keyframes blink {
+  to {
+    background-color: #ffffff;
+    color: #000000;
+  }
+}
+
+#battery.critical:not(.charging) {
+  animation-direction: alternate;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-name: blink;
+  animation-timing-function: linear;
+  background-color: #f53c3c;
+  color: #ffffff;
+}
+
+label:focus {
+  background-color: #000000;
+}
+
+#network {
+}
+
+#network.disconnected {
+}
+
+#wireplumber {
+}
+
+#wireplumber.muted {
+}
+
+#custom-media {
+}
+
+#tray {
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+}
