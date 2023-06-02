@@ -5,6 +5,9 @@
 {{- if eq .chezmoi.os "linux" }}
 # Environment Variables.
 load_environment
+
+set -q $GNOME_KEYRING_CONTROL
+or load_keyring
 {{ end }}
 
 if [ $TERM != linux ]

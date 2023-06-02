@@ -51,8 +51,8 @@ indicator
 # Misc.
 
 # Give 7 seconds of access without requesting a password.
-grace=7
-grace-no-mouse
+#grace=7
+#grace-no-mouse
 
 # I only use two schemes: Dvorak Latam and Qwerty, both of which I know very
 # well, so I don't need this indicator.
