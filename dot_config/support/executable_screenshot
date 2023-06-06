@@ -1,0 +1,12 @@
+#!/usr/bin/env fish
+
+function make_name
+	echo ~/Pictures/Screenshots/(date "+%F_%H-%M-%S.png")
+end
+
+if [ $argv[1] = copy ]
+	grimblast copy $argv[2]
+else 
+	grimblast --notify --cursor $argv[1] $argv[2] (make_name)
+end
+
