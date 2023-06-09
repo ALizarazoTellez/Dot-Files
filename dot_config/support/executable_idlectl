@@ -1,0 +1,31 @@
+#!/usr/bin/env fish
+
+function enable_idle
+    swayidle timeout 120 'hyprctl dispatcher dpms off' before-sleep swaylock after-resume 'hyprctl dispatcher dpms on' timeout 200 'systemctl suspend' &
+    disown
+end
+
+set -l PID (pgrep -x swayidle)
+
+switch $argv[1]
+    case disable
+        if test -n "$PID"
+            kill $PID
+        end
+    case status
+        if test -z "$PID"
+            echo Disabled
+        else
+            echo $PID
+        end
+    case enable
+        enable_idle
+    case toggle
+        if test -n "$PID"
+            kill $PID
+	    echo "Disabled"
+        else
+            enable_idle
+	    echo "Enabled"
+        end
+end

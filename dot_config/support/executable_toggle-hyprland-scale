@@ -1,0 +1,13 @@
+#!/usr/bin/env fish
+
+set -l monitor (hyprctl -j monitors | jq -r '.[] | select(.focused == true) | .name, .scale')
+
+set -l scale $monitor[2]
+
+if [ $scale = "1.25" ]
+    set scale 1
+else
+    set scale 1.25
+end
+
+wlr-randr --output $monitor[1] --scale $scale
