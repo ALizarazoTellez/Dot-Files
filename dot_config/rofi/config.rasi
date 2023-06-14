@@ -1,5 +1,5 @@
 configuration{
-    modi: "run,drun,window";
+    modi: "run,drun,filebrowser";
     icon-theme: "Tela circle blue dark";
     show-icons: true;
     terminal: "kitty";
@@ -9,6 +9,7 @@ configuration{
     hide-scrollbar: true;
     display-drun: "     Apps ";
     display-run: "     Run ";
+    display-filebrowser: "     Files";
     display-window: "     Window";
     display-Network: " 󰤨    Network";
     sidebar-mode: true;
