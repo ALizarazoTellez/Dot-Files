@@ -44,7 +44,7 @@ require("lazy").setup({
 	"SirVer/ultisnips",
 	"honza/vim-snippets",
 	"mattn/emmet-vim",
-	"theRealCarneiro/hyprland-vim-syntax",
+	-- "theRealCarneiro/hyprland-vim-syntax",
 })
 
 

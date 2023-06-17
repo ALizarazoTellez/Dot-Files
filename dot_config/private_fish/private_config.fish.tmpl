@@ -8,6 +8,14 @@ load_environment
 
 set -q $GNOME_KEYRING_CONTROL
 or load_keyring
+
+# Start Hyprland.
+if [ (tty) = "/dev/tty1" ]
+	if not set -q HYPRLAND_CMD # Prevent infinite invocation loop.
+		Hyprland &> /dev/null
+		clear
+	end
+end
 {{ end }}
 
 if [ $TERM != linux ]
