@@ -1,11 +1,28 @@
 #!/usr/bin/env fish
 
+set -l SLURP slurp
+
+function main
+    set -l name (make_name)
+
+    echo $argv
+
+    switch $argv[1]
+        case save-all
+            grim $name
+            notify-send -i $name "Screenshot saved in: $name" -t 1500 -w
+        case copy-all
+            grim - | wl-copy -t image/png
+        case edit-area
+            grim -g (slurp -d) - | swappy -f - -o $name
+            wl-copy -t image/png <$name
+        case
+    end
+end
+
 function make_name
     echo ~/Pictures/Screenshots/(date "+%F_%H-%M-%S.png")
 end
 
-if [ $argv[1] = copy ]
-    grimblast copy $argv[2]
-else
-    grimblast --notify --cursor $argv[1] $argv[2] (make_name)
-end
+
+main $argv
