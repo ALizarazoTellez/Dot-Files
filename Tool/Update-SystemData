@@ -1,0 +1,104 @@
+#!/usr/bin/env python
+
+r"""Update-SystemData
+"""
+
+
+import sys
+import pathlib
+import logging
+import hashlib
+import shutil
+
+
+DOTFILES = pathlib.Path(__file__).absolute().parent.parent
+DOTFILES_SYSTEM_DATA = DOTFILES / "system_data"
+
+SYSTEM_DATA = pathlib.Path("/etc/").absolute()
+
+IGNORE_FILES = [
+    "Readme.md",
+]
+
+
+def main(args):
+    # TODO: The level must be get for line arguments.
+    logging.basicConfig(format="%(levelname)s: %(message)s", level=logging.INFO)
+
+    logging.debug("The SYSTEM_DATA is: %s", SYSTEM_DATA)
+    logging.debug("The DOTFILES is: %s", DOTFILES)
+    logging.debug("The DOTFILES_SYSTEM_DATA is: %s", DOTFILES_SYSTEM_DATA)
+
+    logging.debug("Ignored files: %s", IGNORE_FILES)
+
+    files = get_files(DOTFILES_SYSTEM_DATA, SYSTEM_DATA, IGNORE_FILES)
+    logging.debug(f"FILES: {files}")
+
+    files = get_different_files(DOTFILES_SYSTEM_DATA, SYSTEM_DATA, files)
+    logging.debug(f"Different Files: {files}")
+
+    # Copy files.
+    update_files(DOTFILES_SYSTEM_DATA, SYSTEM_DATA, files)
+
+
+def update_files(dotfiles, system, files):
+    for file in files:
+        name = file.relative_to(dotfiles)
+
+        system_file = system / name
+
+        logging.info(f"Updating {name}")
+
+        shutil.copy(system_file, file)
+
+
+def get_different_files(dotfiles, system, files):
+    _files = []
+
+    for file in files:
+        name = file.relative_to(dotfiles)
+
+        system_file = system / name
+
+        logging.debug(f"Base name: {name}")
+        logging.debug(f"Dotfiles name: {file}")
+        logging.debug(f"System file name: {system_file}")
+
+        checksum_system_file = checksum(system_file)
+        checksum_dotfile = checksum(file)
+
+        logging.debug(f"Checksum System file: {checksum_system_file}")
+        logging.debug(f"Checksum dotfile: {checksum_dotfile}")
+
+        if checksum_system_file != checksum_dotfile:
+            _files.append(file)
+
+    return _files
+
+
+def checksum(file):
+    with open(file, "rb") as f:
+        return hashlib.file_digest(f, "md5").hexdigest()
+
+
+def get_files(dotfiles, system, ignore):
+    files = []
+
+    for file in dotfiles.rglob("*"):
+        name = file.relative_to(dotfiles)
+
+        if not file.is_file():
+            continue
+        elif str(name) in ignore:
+            logging.info(f"Ignored: {file}")
+            continue
+        elif (system / name).exists():
+            files.append(file)
+        else:
+            logging.warning(f"Unknown file: {file}")
+
+    return files
+
+
+if __name__ == "__main__":
+    main(sys.argv)

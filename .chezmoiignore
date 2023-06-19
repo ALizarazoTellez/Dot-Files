@@ -4,6 +4,11 @@
 /Readme.md
 /License.txt
 
+# System Configuration.
+/system_data/
+
+# Tools.
+/Tool/
 
 # These point files are designed for Arch Linux and Android Termux. The output
 # of the `.chezmoi.os` variable is `linux` in Arch Linux and `android` in
