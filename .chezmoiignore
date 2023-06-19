@@ -19,13 +19,34 @@
 
 # Environment variables.
 /.config/environment.d/
+
 # This function is unnecessary without environment variables.
 /.config/fish/functions/load_environment.fish
+
+# Termux does not use keyring.
+/.config/fish/functions/load_keyring.fish
+
 # Wayland related configuration.
 /.config/swaylock
+/.config/dunst
+/.config/gammastep
+/.config/hypr
+/.config/rofi
+/.config/waybar
+
 # Arch-specific scripts.
 /.config/support/tmux-start
+/.config/support/hypr-idlectl
+/.config/support/idlectl
+/.config/support/rofi-keyboard
+/.config/support/screenshot
+/.config/support/toggle-hyprland-scale
+/.config/support/waydroid-toggle-shortcuts
+/.config/support/xdph
 
+# Data irrelevant to Termux, because they were disabled in previous lines.
+/.local/share/nwg-look
+/.local/share/rofi
 
 {{- else if eq .chezmoi.os "linux" }}
 # Avoid Android-specific files on Arch Linux.
