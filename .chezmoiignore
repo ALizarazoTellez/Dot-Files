@@ -51,5 +51,7 @@
 {{- else if eq .chezmoi.os "linux" }}
 # Avoid Android-specific files on Arch Linux.
 
+# Termux Configuration.
+/.termux/
 
 {{- end }}
