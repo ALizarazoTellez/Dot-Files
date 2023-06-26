@@ -1,0 +1,10 @@
+[Unit]
+Description=Disable Intel Turbo Boost
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/x86_energy_perf_policy --turbo-enable 0
+
+[Install]
+WantedBy=multi-user.target
