@@ -16,6 +16,13 @@ if [ (tty) = "/dev/tty1" ]
 		clear
 	end
 end
+
+# Start Tmux on KMSCON.
+if [ "$COLORTERM" = "kmscon" ]
+	if not set -q TMUX
+		tmux
+	end
+end
 {{ end }}
 
 if [ $TERM != linux ]
