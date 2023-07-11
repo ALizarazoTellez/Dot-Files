@@ -45,8 +45,12 @@
 /.config/support/xdph
 
 # Data irrelevant to Termux, because they were disabled in previous lines.
-/.local/share/nwg-look
-/.local/share/rofi
+/.local/share/nwg-look/
+/.local/share/rofi/
+/.local/share/applications/
+
+# Tmux.
+/.config/tmux/
 
 {{- else if eq .chezmoi.os "linux" }}
 # Avoid Android-specific files on Arch Linux.
