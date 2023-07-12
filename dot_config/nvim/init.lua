@@ -16,6 +16,20 @@ vim.g.mapleader = " "
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- Vim Wiki.
+-- Due to the plugin architecture, it is necessary to have these variables
+-- defined before loading the plugin for them to take effect.
+vim.g.vimwiki_list = {
+	{
+		path='~/ZettelKasten/',
+		syntax='markdown',
+		ext='.md',
+		index='Index', 
+		diary_rel_path='Private/Diary/',
+		diary_index='Diary',
+	},
+}
+vim.g.vimwiki_global_ext = 0
 
 -- Plugin Manager (Lazy).
 
@@ -47,7 +61,7 @@ require("lazy").setup({
 	"honza/vim-snippets",
 	"mattn/emmet-vim",
 	"tpope/vim-fugitive",
-	-- "theRealCarneiro/hyprland-vim-syntax",
+	'vimwiki/vimwiki',
 })
 
 
@@ -71,3 +85,4 @@ vim.g.UltiSnipsEditSplit="vertical"
 -- Emmet.
 vim.g.emmet_html5 = 1
 vim.g.user_emmet_leader_key = "" -- I prefer use ":Emmet".
+
